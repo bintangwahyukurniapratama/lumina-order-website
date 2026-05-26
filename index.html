@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina Order - Digital Education Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Tailwind config for Neo-Brutalism -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neo': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'neo-hover': '8px 8px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-black font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="p-6 border-b-[3px] border-black bg-[#FF90E8] shadow-neo mb-6 mx-4 mt-4">
+        <h1 class="text-4xl font-black uppercase tracking-tight">Lumina Order</h1>
+        <p class="text-lg font-bold mt-2">Digital Education Hub & Showcase Platform</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto w-full max-w-7xl">
+        <!-- Category Filter -->
+        <div class="px-4 mb-6">
+            <h2 class="text-2xl font-black mb-4">Kategori</h2>
+            <div id="category-container" class="flex flex-nowrap overflow-x-auto hide-scrollbar gap-4 pb-2">
+                <button class="filter-btn py-3 px-6 font-black border-[3px] border-black transition-all flex-shrink-0 bg-black text-white translate-x-1 translate-y-1" data-category="Semua">Semua</button>
+                <button class="filter-btn py-3 px-6 font-black border-[3px] border-black transition-all flex-shrink-0 bg-white shadow-neo active:translate-x-1 active:translate-y-1 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-neo-hover" data-category="Sains">Sains</button>
+                <button class="filter-btn py-3 px-6 font-black border-[3px] border-black transition-all flex-shrink-0 bg-white shadow-neo active:translate-x-1 active:translate-y-1 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-neo-hover" data-category="IPS">IPS</button>
+                <button class="filter-btn py-3 px-6 font-black border-[3px] border-black transition-all flex-shrink-0 bg-white shadow-neo active:translate-x-1 active:translate-y-1 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-neo-hover" data-category="Sejarah">Sejarah</button>
+            </div>
+        </div>
+
+        <!-- Grid Kartu Media -->
+        <div id="media-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mb-12">
+            <!-- Cards will be injected here -->
+        </div>
+    </main>
+
+    <!-- Launcher Modal (Mode Proyektor) -->
+    <div id="media-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex-col items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white border-[3px] border-black shadow-neo w-full max-w-4xl max-h-[90vh] flex flex-col relative">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b-[3px] border-black bg-[#FFC900]">
+                <h3 id="modal-title" class="text-xl font-black truncate pr-4">Judul Media</h3>
+                <button id="close-modal" class="py-2 px-4 bg-red-500 text-white font-bold border-[3px] border-black shadow-neo active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                    TUTUP
+                </button>
+            </div>
+            
+            <!-- Modal Body (Iframe + QR Placeholder) -->
+            <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
+                <!-- Iframe Container -->
+                <div class="flex-grow bg-black relative min-h-[300px] border-b-[3px] md:border-b-0 md:border-r-[3px] border-black p-0">
+                    <iframe id="modal-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <!-- QR Code & Controls Sidebar -->
+                <div class="w-full md:w-64 bg-[#22D3EE] p-4 flex flex-col gap-4 flex-shrink-0 overflow-y-auto">
+                    <div class="bg-white border-[3px] border-black p-4 aspect-square flex items-center justify-center shadow-neo">
+                        <span class="text-center font-bold text-sm">Area<br>QR Code</span>
+                    </div>
+                    <button id="fullscreen-btn" class="w-full py-3 px-4 bg-white font-black border-[3px] border-black shadow-neo active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                        FULL SCREEN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Floating Contact Card -->
+    <div class="fixed bottom-6 right-6 z-50 bg-white border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-4 flex flex-col">
+        <div class="mb-3">
+            <h4 class="font-black text-base">Pesan Media Custom?</h4>
+            <p class="text-xs font-bold text-gray-800 mt-1">Bintang Wahyu Kurnia Pratama</p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <a href="https://wa.me/6287841088228?text=Halo%20Bintang,%20saya%20ingin%20berkonsultasi%20untuk%20pemesanan%20media%20pembelajaran%20custom%20di%20Lumina%20Order." target="_blank" rel="noopener noreferrer" class="text-center py-2 px-3 bg-green-400 font-bold text-sm border-[2px] border-black transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none">
+                Chat WhatsApp
+            </a>
+            <a href="mailto:bintangwahyukurniapratama@gmail.com?subject=Pemesanan%20Media%20Lumina%20Order" class="text-center py-2 px-3 bg-blue-400 font-bold text-sm border-[2px] border-black transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none">
+                Kirim Email
+            </a>
+        </div>
+    </div>
+</body>
+</html>
