@@ -62,6 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
+        // Prevent body scroll when chat is active for native app feel on mobile
+        if (sectionId === 'chat-section') {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        
         // Close mobile menu if open
         navMenu.classList.add('hidden');
         navMenu.classList.remove('flex');

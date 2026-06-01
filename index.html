@@ -336,8 +336,8 @@
         </section>
 
         <!-- Chat Section -->
-        <section id="chat-section" class="hidden flex-grow container mx-auto w-full max-w-4xl px-2 md:px-4 mt-4 md:mt-8 mb-8 md:mb-12 transition-opacity duration-300">
-            <div class="bg-white dark:bg-slate-800 border-[3px] border-black dark:border-white shadow-neo dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-3xl flex flex-col h-[75vh] md:h-[70vh] min-h-[400px] overflow-hidden">
+        <section id="chat-section" class="hidden flex-grow w-full md:container md:mx-auto md:max-w-4xl px-0 md:px-4 mt-0 md:mt-8 mb-0 md:mb-12 transition-opacity duration-300 h-[calc(100dvh-76px)] md:h-auto">
+            <div class="bg-white dark:bg-slate-800 border-t-[3px] border-b-[3px] md:border-[3px] border-black dark:border-white shadow-none md:shadow-neo md:dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-none md:rounded-3xl flex flex-col h-full md:h-[70vh] md:min-h-[500px] overflow-hidden">
                 <!-- Header -->
                 <div class="bg-neo-yellow p-4 md:p-6 border-b-[3px] border-black dark:border-white flex items-center justify-between gap-4 text-black shrink-0">
                     <div class="flex items-center gap-4">
@@ -369,7 +369,7 @@
                 </div>
 
                 <!-- Input Area -->
-                <div class="p-3 md:p-6 bg-white dark:bg-slate-800 border-t-[3px] border-black dark:border-white shrink-0">
+                <div class="p-3 md:p-6 bg-white dark:bg-slate-800 border-t-[3px] border-black dark:border-white shrink-0 pb-safe">
                     <form id="chat-form" class="flex gap-2 md:gap-3 relative">
                         <input type="text" id="chat-input" placeholder="Tanya sesuatu..." autocomplete="off" class="flex-grow py-3 md:py-4 px-4 md:px-5 rounded-xl md:rounded-2xl font-bold text-sm md:text-lg border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] focus:outline-none focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all dark:bg-slate-700 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400">
                         <button type="submit" class="px-4 md:px-6 py-3 md:py-4 bg-neo-yellow text-black border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-xl md:rounded-2xl font-black active:translate-x-1 active:translate-y-1 active:shadow-none hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
