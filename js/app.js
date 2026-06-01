@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = {
         'beranda-section': document.getElementById('beranda-section'),
         'upload-section': document.getElementById('upload-section'),
-        'publik-section': document.getElementById('publik-section')
+        'publik-section': document.getElementById('publik-section'),
+        'faq-section': document.getElementById('faq-section'),
+        'chat-section': document.getElementById('chat-section')
     };
     const uploadForm = document.getElementById('upload-form');
     const submitBtn = document.getElementById('submit-upload-btn');
@@ -159,34 +161,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 items.reverse().forEach((item, index) => {
-                    // Normalize keys since sheet columns might have spaces
                     const judul = item['Judul'] || item['judul'] || 'Tanpa Judul';
                     const kategori = item['Kategori'] || item['kategori'] || 'Umum';
                     const link = item['Link'] || item['link'] || '#';
                     const deskripsi = item['Deskripsi Singkat'] || item['deskripsi singkat'] || item['deskripsi'] || '';
                     const nama = item['Nama Pembuat'] || item['nama pembuat'] || 'Anonim';
+                    const explicitThumbnail = item['Thumbnail'] || item['thumbnail'];
                     
                     const rotation = Math.random() > 0.5 ? 'rotate-1' : '-rotate-1';
+                    
+                    // Generate a random color for the fallback placeholder
+                    const colorHexes = ['FEF08A', 'BAE6FD', 'FBCFE8', 'A7F3D0'];
+                    const hexCode = colorHexes[judul.length % colorHexes.length];
+                    const encodedTitle = encodeURIComponent(judul);
+                    const fallbackImg = `https://placehold.co/600x400/${hexCode}/000000?text=${encodedTitle}&font=Montserrat`;
+                    
+                    let imgSrc = explicitThumbnail;
+                    if (!imgSrc) {
+                        imgSrc = fallbackImg;
+                    }
                     
                     const card = document.createElement('div');
                     card.style.animationDelay = `${index * 0.05}s`;
                     card.className = `bg-white dark:bg-slate-800 border-[3px] border-black dark:border-white shadow-neo dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex flex-col ${rotation} 
                                       transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-neo-hover dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] group relative opacity-0 animate-fade-in-up rounded-3xl overflow-hidden`;
-                    
-                    // Generate a random color based on string length to make cards colorful
-                    const colors = ['bg-neo-yellow', 'bg-neo-blue', 'bg-neo-pink', 'bg-neo-green'];
-                    const colorClass = colors[judul.length % colors.length];
 
                     card.innerHTML = `
-                        <div class="h-16 border-b-[3px] border-black dark:border-white flex items-center justify-center font-black text-xl uppercase ${colorClass} dark:text-black">
-                            KARYA PUBLIK
+                        <div class="h-48 border-b-[3px] border-black dark:border-white overflow-hidden bg-gray-200 relative flex-shrink-0">
+                            <img src="${imgSrc}" onerror="this.onerror=null; this.src='${fallbackImg}';" alt="${judul}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <div class="p-5 flex-grow flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <span class="inline-block px-3 py-1 bg-neo-blue border-[2px] border-black dark:border-white text-xs font-black uppercase break-words rounded-full dark:text-black">
+                            <div class="flex justify-between items-start mb-3 gap-2 flex-wrap">
+                                <span class="inline-block px-3 py-1 bg-neo-blue border-[2px] border-black dark:border-white text-xs font-black uppercase break-words rounded-full dark:text-black shrink-0">
                                     ${kategori}
                                 </span>
-                                <span class="text-xs font-bold text-gray-600 dark:text-black bg-white px-3 py-1 border-[2px] border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-full">
+                                <span class="text-xs font-bold text-gray-600 dark:text-black bg-white px-3 py-1 border-[2px] border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] rounded-full shrink-0">
                                     By: ${nama}
                                 </span>
                             </div>
@@ -348,11 +357,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="p-5 flex-grow flex flex-col">
-                    <div class="flex justify-between items-start mb-3">
-                        <span class="inline-block px-3 py-1 bg-neo-blue rounded-full border-[2px] border-black dark:border-white text-xs font-black uppercase break-words dark:text-black">
+                    <div class="flex justify-between items-start mb-3 gap-2 flex-wrap">
+                        <span class="inline-block px-3 py-1 bg-neo-blue rounded-full border-[2px] border-black dark:border-white text-xs font-black uppercase break-words dark:text-black shrink-0">
                             ${item.kategori}
                         </span>
-                        <span class="text-xs font-bold text-gray-600 dark:text-black bg-white px-3 py-1 border-[2px] border-black dark:border-white rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+                        <span class="text-xs font-bold text-gray-600 dark:text-black bg-white px-3 py-1 border-[2px] border-black dark:border-white rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] shrink-0">
                             By: ${author}
                         </span>
                     </div>
