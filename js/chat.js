@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function appendMessage(sender, text) {
         const msgDiv = document.createElement('div');
-        msgDiv.className = `max-w-[85%] md:max-w-[70%] p-4 rounded-2xl border-[3px] border-black text-base md:text-lg font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] leading-relaxed ${
+        msgDiv.className = `max-w-[85%] md:max-w-[70%] p-3 md:p-4 rounded-2xl border-[3px] border-black text-sm md:text-lg font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] leading-relaxed ${
             sender === 'user' ? 'self-end bg-neo-green text-black rounded-tr-none' : 'self-start bg-white dark:bg-slate-800 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-tl-none'
         }`;
         msgDiv.innerHTML = formatMarkdown(text);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const loadingId = 'loading-' + Date.now();
             const loadingDiv = document.createElement('div');
             loadingDiv.id = loadingId;
-            loadingDiv.className = `self-start max-w-[85%] md:max-w-[70%] p-4 rounded-2xl rounded-tl-none border-[3px] border-black bg-neo-yellow text-black text-base md:text-lg font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex gap-2 items-center`;
+            loadingDiv.className = `self-start max-w-[85%] md:max-w-[70%] p-3 md:p-4 rounded-2xl rounded-tl-none border-[3px] border-black bg-neo-yellow text-black text-sm md:text-lg font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex gap-2 items-center`;
             loadingDiv.innerHTML = `<div class="w-2 h-2 bg-black rounded-full animate-bounce"></div><div class="w-2 h-2 bg-black rounded-full animate-bounce" style="animation-delay: 0.1s"></div><div class="w-2 h-2 bg-black rounded-full animate-bounce" style="animation-delay: 0.2s"></div>`;
             chatMessages.appendChild(loadingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
