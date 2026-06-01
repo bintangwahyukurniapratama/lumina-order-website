@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumina Order - Digital Education Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS untuk Chat Mode 1 Layar Penuh yang Responsif */
+        body.chat-mode {
+            height: 100vh; /* Fallback */
+            height: 100dvh;
+            overflow: hidden;
+        }
+        body.chat-mode #spa-container {
+            min-height: 0;
+        }
+    </style>
     <!-- Tailwind config for Neo-Brutalism -->
     <script>
         tailwind.config = {
@@ -336,8 +348,8 @@
         </section>
 
         <!-- Chat Section -->
-        <section id="chat-section" class="hidden flex-grow w-full md:container md:mx-auto md:max-w-4xl px-0 md:px-4 mt-0 md:mt-8 mb-0 md:mb-12 transition-opacity duration-300 h-[calc(100dvh-76px)] md:h-auto">
-            <div class="bg-white dark:bg-slate-800 border-t-[3px] border-b-[3px] md:border-[3px] border-black dark:border-white shadow-none md:shadow-neo md:dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-none md:rounded-3xl flex flex-col h-full md:h-[70vh] md:min-h-[500px] overflow-hidden">
+        <section id="chat-section" class="hidden flex-grow flex-col w-full md:container md:mx-auto md:max-w-4xl px-0 md:px-4 mt-0 md:mt-4 mb-0 md:mb-8 transition-opacity duration-300 min-h-0">
+            <div class="bg-white dark:bg-slate-800 border-t-[3px] border-b-[3px] md:border-[3px] border-black dark:border-white shadow-none md:shadow-neo md:dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] rounded-none md:rounded-3xl flex flex-col flex-grow min-h-0 overflow-hidden">
                 <!-- Header -->
                 <div class="bg-neo-yellow p-4 md:p-6 border-b-[3px] border-black dark:border-white flex items-center justify-between gap-4 text-black shrink-0">
                     <div class="flex items-center gap-4">
